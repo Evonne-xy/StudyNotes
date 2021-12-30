@@ -36,6 +36,46 @@ module.exports = {
 
 3.打上断点，npm run serve 然后点击debugger旁边的播放按钮
 
+
+## Vue 安装
+
+### Vue CLi
+
+1. vue create (app name)
+2. ? Please pick a preset:
+   Manually select features
+
+? Check the features needed for your project: Choose Vue version, Babel, Linter
+
+? Choose a version of Vue.js that you want to start the project with 3.x
+
+? Pick a linter / formatter config: Basic
+
+? Pick additional lint features: Lint on save
+
+? Where do you prefer placing config for Babel, ESLint, etc.? In dedicated config files
+
+? Save this as a preset for future projects? No
+
+? Pick the package manager to use when installing dependencies: NPM
+
+3. cd (app address)
+4. npm run serve
+
+当下载一个新的 project 里面没有 node-module 时
+
+1. terminal - new terminal
+2. npm install
+3. npm run serve
+
+npm 安装包
+
+npm install vue-router@next --save
+npm install --save vuex@next
+npm install normalize.css --save
+
+
+
 ## Section 2
 
 ### {{}}
@@ -169,7 +209,11 @@ data(){
 ```
 
 ```html
-<input type="text", v-on:input="setName($event)"></input>
+<input type="text", v-on:input="setName($event)" v-bind:value = "name"></input>
+
+setName(event){
+  this.name  = event.target.value
+}
 ```
 
 ### computed
@@ -809,11 +853,11 @@ VUE 是怎么做到仅仅渲染那个改变的部分呢？
 
 ⬇️
 
-#### beforeCreate(): Vue 实例（data methods）创建之前
+#### beforeCreate(): 在创建实例（data methods）之前之前会自动执行的函数
 
 ⬇️
 
-#### created() : Vue 实例创建完毕
+#### created() : 在实例生成之后会自动执行的函数
 
 > 现在 VUE 知道了 data peoperty 和一些基本的 app configuration，
 > VUE 编辑模版，将动态占位符,插值替换为具体的值,然后将这个模版渲染为内存中的 DOM
@@ -825,7 +869,7 @@ VUE 是怎么做到仅仅渲染那个改变的部分呢？
 > 将内存中的模版替换到浏览器页面中去
 > ⬇️
 
-#### mounted(): 可以在浏览器看到了
+#### mounted(): 在组件内容被渲染到页面之后自定执行的函数
 
 ---
 
@@ -864,35 +908,9 @@ Vue apps are independent from each other - they can't really communicate with ea
 
 DO offer certain communication mechanisms that allow you to exchange data between them
 
-### Vue CLi
 
-1. vue create (app name)
-2. ? Please pick a preset:
-   Manually select features
 
-? Check the features needed for your project: Choose Vue version, Babel, Linter
-
-? Choose a version of Vue.js that you want to start the project with 3.x
-
-? Pick a linter / formatter config: Basic
-
-? Pick additional lint features: Lint on save
-
-? Where do you prefer placing config for Babel, ESLint, etc.? In dedicated config files
-
-? Save this as a preset for future projects? No
-
-? Pick the package manager to use when installing dependencies: NPM
-
-3. cd (app address)
-4. npm run serve
-
-当下载一个新的 project 里面没有 node-module 时
-
-1. terminal - new terminal
-2. npm install
-3. npm run serve
-
+## Component VueCLI
 ---
 
 ## Component Communication(parent => child)
@@ -1051,7 +1069,7 @@ export default{
 
 2.Parent file(App.vue) -> listen event
 
-```
+```html
 <friendContact
 <!-- bind this 与 js code, 当事件发生时，这个应该被执行 -->
 
@@ -1193,6 +1211,8 @@ export default {
 ## Slot
 
 允许接受 html content from outside component
+
+slot的使用场景是什么？使用dom、标签的在组件中传递时，使用slot插槽进行传递会变得简单很多
 
 BaseCard html
 
@@ -1635,7 +1655,7 @@ axios
 ```javascript
 import axios from 'axios'
 
-axios.post('https://vue-http-demo-34993-default-rtdb.firebaseio.com/surveys.json'{
+axios.post('https://vue-http-demo-34993-default-rtdb.firebaseio.com/surveys.json',{
   name:this.enteredName,
   rating: this.chosenRating
 })
@@ -3443,6 +3463,369 @@ change it to
 4. use firebase login --no-localhost
 
 ## composition API
+### 建立reactive object
+
+![Vue-composition API](Img/compositionAPIWithOptionApi.jpg)
+
+#### 使用setup 代替 data methods computed watch
+
+--ref ref可以被使用与单一的value，也可以object
+```html
+<template>
+  <section class="container">
+    <h2>{{ userName }}</h2>
+  </section>
+</template>
+
+<script>
+import { ref } from 'vue';
+export default {
+  setup() {
+    //会被执行在vue很早的时候，所以props,methods, data都不可以被access
+    const uName = ref('Evonne');
+    //ref是一个function，里面有一个value property,可以被调用，ref定义的uName可以使用return在template中被使用
+
+    setTimeout(function() {
+      uName.value = "max"; // 
+    },2000)
+
+    return { userName: uName }; //想在template使用的object，需要在return中返回
+  },
+};
+</script>
+```
+使用在object, user.value.name
+
+```js
+<script>
+import { ref } from 'vue';
+export default {
+  setup() {
+    const user = ref({
+      name:'Evonne',
+      age:22
+    });
+
+    setTimeout(function(){
+      user.value.name = "Yi";
+      user.value.age = 23
+    },2000);
+    return { user:user };
+  },
+};
+</script>
+```
+
+-- 使用reactive 也可以是object
+
+```js
+<script>
+import { reactive } from 'vue';
+export default {
+  setup() {
+    const user = reactive({
+      name:'Evonne',
+      age:22
+    });
+
+    setTimeout(function(){
+      user.name = "Yi";
+      user.age = 23
+    },2000);
+    return { user:user };
+  },
+};
+</script>
+```
+
+##获取dom节点
+
+
+```html
+<div ref = "hello>Hello World</div>
+
+<script>
+setup(){
+  const hello = ref(null); //这个hello就是dom 节点
+  onMounted(() => {
+    console.log(hello.value) // 这个就可以打印出来‘hello world’
+  })
+
+}
+</script>
+```
+
+
+## 代替methods with regular methods
+
+```html
+
+<button @click = "changeAge">Change Age</button>
+
+<script>
+export default {
+    function chanAge(){
+      user.value.age = 23
+    }
+    return { changeAge: chanAge};
+  },
+};
+</script>
+
+```
+
+## replace computed, watch
+
+```html
+<p>{{userName}}</p>
+<input type = "text" placeholder = "firstName" @input = "setFirstName"/>
+<input type = "text" placeholder = "lastName"   @input = "setLastName"/>
+
+<script>
+  import {ref,computed,watch} from 'vue'
+  export default{
+    setup(){
+        const uName = computed(function(){
+          return firstName + ' ' + lastName;
+        });
+
+       watch([uAge, uName],function(oldValue,newValue){
+        console.log('uAge:' + oldValue[0]);
+        console.log('uAge:' + newValue[0]);
+       });
+       return {userName:uName}
+    },
+  }
+</script>
+```
+
+## components props provide & composition API
+
+```html
+<template>
+  <section class="container">
+    <user-data :firstName="firstName" :lastName="lastName"></user-data>
+  </section>
+</template>
+
+<script>
+import UserData from './components/userData.vue';
+export default {
+  components: {
+    UserData,
+  },
+  setup(){
+    provide('userAge', uAge); //使用provide方法
+  }
+</script>
+```
+
+components
+```html
+<script>
+import {computed，inject} from 'vue';//使用inject
+export default {
+    props:['firstName','lastName'],
+
+    setup(props,context){
+        const userName = computed(function(){
+            return props.firstName + '  ' + props.lastName; //使用props...来获取props的值
+        });
+        console.log(context) // log出来有： attr emits slots
+        //attr 代表的是none-props属性，就是父组件传到子组件去，按理说，子组件应该有一props[]进行接收，但是如果不接收，就变成了none-props，存到了 attr中。 可以使用console.log(attrs)得到这个值
+        context.emits('saveData') // 使用emit
+        const uAge = inject('userAge');
+        return {userName,uAge};
+    }
+}
+</script>
+```
+
+ 使用context中的slots、 emits
+
+ 父组件
+ ```html
+ <child @change = "handleChange">parent</child>
+
+ methods:{
+   handleChange(){
+
+   }
+ }
+ ```
+
+ 子组件
+```js
+setup(){
+  const {h} = Vue;
+  const {attrs,slots, emit} = context;
+
+
+  function handleClick() {emit ('change); } //emit 
+  return {handleClick}
+
+
+
+  console.log(slots.default()); //输出是一个虚拟dom
+  return ()=> h ('div', {}, slots.default()) 
+}
+
+```
+
+以前没有compositionAPI的时候 想使用slots,现在使用的是context里的 slots
+```
+mounted{
+  console.log(this.$slots);
+}
+
+```
+
+当需要watch props value
+
+```js
+import {refs} from 'vue';
+props:['user']
+
+// const propsWithRefs = toRefs(props);
+// const user = propsWithRefs.user;
+//是上面这两行的简写
+const {user} = toRefs(props); //将user key 从 props object中拨出 然后const他为user这个名字
+  ....
+  //如果直接写props.user，这只是一个值，这个值不能reactive
+}) 
+```
+
+
+
+## LifeHooks in composition API
+
+查看图片：
+![Vue-composition API](Img/compositionApiLifecycle.jpg)
+```html
+<script>
+  import {onBeforeMount,onMounted} from 'vue;
+  export default{
+    setUp(){
+    onBeforeMount(function(){
+      console.log('onBeforeMount');
+    })
+
+    onMounted(function(){
+      console.log('onMounted');
+    })
+  }
+  }
+  
+
+</script>
+```
+
+## Routing, params && composition 
+
+route.js
+```js
+{path: 'products/:pid',component:ProductDetails, props:true}
+```
+ProductDetails file 
+想点击product2，之后展示product2的内容，props 可以watch props 变化， 但是仅仅是url变化，页面不会变化，所以需要相同的理念，需要将selectPRoduct也变成computed的value，他一变化 就知道
+
+```js
+<router-link to = '/products/p2'>Product2</router-link>
+
+ props:['pid'],
+
+   const selectProduct =  computed(()=>products.value.find((product) => product.id === props.pid)); 
+    const title = computed(()=> selectProduct.value.title);
+    const price = computed(()=>selectProduct.value.price);
+    const description = computed(()=>selectProduct.value.description);
+
+```
+
+## 使用router 去 navigate && composition API
+
+```js
+import { useRouter } from 'vue-router';
+setup(){
+  const router = useRouter();
+  router.push('/path'); //以前写的是this.$route.params 但是 setup无法 get 到 this的值
+}
+```
+
+## 使用composition API && Vuex
+
+```js
+import {useStore} from 'vuex';
+
+const store = useStore(); //instead of using this.$store
+function inc(){
+  store.dispatch('increment')
+}
+
+```
+---
+## Minxin && composition API
+
+有两个components 有相同的代码，可以创建一个mixin文件夹,文件夹里创建一个file，在里面写上重复的代码。
+如果你的mixin中有和import这个组件有命名冲突，这个组件里的data会overwrite这个有命名冲突的data 
+
+component
+```js
+import alertMixin from '../mixins/alert.js'
+
+export default{
+  mixins:[alertMixin],
+}
+```
+
+## global minxin
+
+
+app.js 
+
+```js
+import loggerMixin from './mixins/alert.js'
+app.mixin(loggerMixin)
+```
+
+## custom hooks / composition API 
+
+目的是将重复的代码写进一个文件里，然后可以重复调用.与minxin的区别就是，这种方法对data merge时候，会有命名重复,第二点，在做大型项目的时候，如果有很多minxin，就不能很快的看到，这个data,method是哪里的
+
+1. 在src文件夹下建立hooks文件夹，在hooks文件夹下建立 alert.js file
+2. 将重复的内容粘贴进去(alert.js file)
+```js
+export default function useAlert(){
+  ...
+  return [
+      alertIsVisible,
+      showAlert,
+      hideAlert
+    ];
+}
+```
+3. 在component中
+
+```js
+import useAlert from '../hooks/alert.js'; 
+
+setup(){
+  const [alertIsVisible, showAlert, hideAlert] = useAlert(); 
+  //标出数据：pull these object out of array and store it new const
+  // 使用的是哪一个方法
+    return{alertIsVisible, showAlert, hideAlert}
+}
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
