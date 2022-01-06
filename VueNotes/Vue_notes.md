@@ -375,6 +375,10 @@ watch: {
  </div>
 ```
 
+```
+<div :class = "['item_checked', 'iconfont', item.check? 'item_checkedActive': 'item_checkedNoActive']">
+```
+
 ### v-if v-else-if
 
 v-if 里可以写判断语句，只要他的返回结果为 true 就可以
@@ -3100,7 +3104,7 @@ export default {
 ## Vuex Async code with actions
 
 Action 类似于 mutation，但是不同点在于：
-1.Actiont 提交的是 mutation，而不是每次都变更状态
+1.Action 提交的是 mutation，而不是每次都变更状态
 2.Action 可以包含任意异步操作。
 
 main.js
@@ -3683,16 +3687,21 @@ mounted{
 当需要watch props value
 
 ```js
-import {refs} from 'vue';
+import {toRefs} from 'vue';
 props:['user']
+export default{
+  setup(props) // 这个很重要！ 作用：pass root props
+{
+    // const propsWithRefs = toRefs(props).user;下面是这个的简写
+    const {user} = toRefs(props); //将user key 从 props object中拨出 然后const他为user这个名字
+    //如果直接写props.user，这只是一个值，这个值不能reactive
+    watch(user, (oldValue, newValue)=>{
+      console.log(oldValue)
+    })
+  }  
+}
 
-// const propsWithRefs = toRefs(props);
-// const user = propsWithRefs.user;
-//是上面这两行的简写
-const {user} = toRefs(props); //将user key 从 props object中拨出 然后const他为user这个名字
-  ....
-  //如果直接写props.user，这只是一个值，这个值不能reactive
-}) 
+ 
 ```
 
 
