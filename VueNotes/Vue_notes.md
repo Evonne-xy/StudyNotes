@@ -3637,7 +3637,7 @@ export default {
         });
         console.log(context) // log出来有： attr emits slots
         //attr 代表的是none-props属性，就是父组件传到子组件去，按理说，子组件应该有一props[]进行接收，但是如果不接收，就变成了none-props，存到了 attr中。 可以使用console.log(attrs)得到这个值
-        context.emits('saveData') // 使用emit
+        context.emit('saveData') // 使用emit 一定要写props
         const uAge = inject('userAge');
         return {userName,uAge};
     }
@@ -3665,7 +3665,7 @@ setup(){
   const {attrs,slots, emit} = context;
 
 
-  function handleClick() {emit ('change); } //emit 
+  function handleClick() {emit ('change'); } //emit 
   return {handleClick}
 
 
