@@ -1,6 +1,3 @@
-# Javascript Notes
----
-
 ## [object Object] 是什么
 [object Object] 是对象字符串的形式，他表示的是一个对象，可以使用JSON.stringfy()来避免
 
