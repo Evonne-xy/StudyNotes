@@ -38,9 +38,7 @@ VueNotes 的笔记较长，也是最开始写的一个笔记，还未归类，�
 
 [如何使得页面部分进行滚动](/CssNotes/如何使得页面部分进行滚动.md)
 
-
 ---
-<br></br>
 
 [HTML相关问题](/InterviewNotes/Css/HTML相关问题.md)
 
@@ -73,12 +71,12 @@ VueNotes 的笔记较长，也是最开始写的一个笔记，还未归类，�
 
 [类型转换](/InterviewNotes/Js/类型转换.md)
 
-<br></br>
+
 ### 原型 && 原型链
 
 [Js原型 && 原型链](/InterviewNotes/Js/Js原型&原型链.md)
 
-<br></br>
+
 ### 作用域 闭包 
 [什么是函数式编程](/JsNotes/What_is_Functional_Programming.md)
 
