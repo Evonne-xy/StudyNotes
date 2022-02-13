@@ -19,15 +19,17 @@ VueNotes 的笔记较长，也是最开始写的一个笔记，还未归类，�
 希望自己可以继续写下去，加油💪
 
 
-## AlgorithmNotes
-[时间空间复杂度](../StudyNotes/AlgorithmNotes/2-1时间空间复杂度/时间空间复杂度.md)
-[队列, 异步事件循环](../StudyNotes/AlgorithmNotes/4-队列/队列异步事件循环.md)
+## Algorithm Notes
+[时间空间复杂度](/AlgorithmNotes/2-1时间空间复杂度/时间空间复杂度.md)
 
-### 链表
-[链表](../StudyNotes/AlgorithmNotes/5-链表/链表.md)
+[队列, 异步事件循环](/AlgorithmNotes/4-队列/队列异步事件循环.md)
 
-### Tree
-[二叉树先中后序遍历](../StudyNotes/AlgorithmNotes/8-2Tree/二叉树先中后序遍历.md)
-[深度广度优先遍历](../StudyNotes/AlgorithmNotes/8-2Tree/深度广度优先遍历.md)
+[链表](/AlgorithmNotes/5-链表/链表.md)
 
+[二叉树先中后序遍历](/AlgorithmNotes/8-2Tree/二叉树先中后序遍历.md)
+
+[深度广度优先遍历](/AlgorithmNotes/8-2Tree/深度广度优先遍历.md)
+
+## CSS
+[深度广度优先遍历](/AlgorithmNotes/8-2Tree/深度广度优先遍历.md)
 
