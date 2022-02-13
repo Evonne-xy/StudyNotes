@@ -78,22 +78,6 @@ VueNotes 的笔记较长，也是最开始写的一个笔记，还未归类，�
 
 
 ### 作用域 闭包 
-[什么是函数式编程](/JsNotes/What_is_Functional_Programming.md)
-
-[Object与object如何比较](/JsNotes/object比较.md)
-
-[[objectObject] 是什么](/JsNotes/[objectObject]是什么.md)
-
-[区别 Some() Every() Find()](/JsNotes/区别_Some_Every_Find.md)
-
-[区别 for..in forOf](/JsNotes/区别for..in,forOf.md)
-
-[区别 map() reduce() filter()](/JsNotes/区别map_reduce_filter.md)
-
-[区别 Set Map Array ](/JsNotes/区别map&set.md)
-
---- 
-
 
 [函数名相同](/InterviewNotes/Js/函数名相同.md)
 
@@ -108,6 +92,21 @@ VueNotes 的笔记较长，也是最开始写的一个笔记，还未归类，�
 [手写apply call bind函数](/InterviewNotes/Js/手写applycallbind函数.md)
 
 [variable shadowing是什么](/InterviewNotes/Js/variableshadowing是什么.md)
+
+---
+[什么是函数式编程](/JsNotes/What_is_Functional_Programming.md)
+
+[Object与object如何比较](/JsNotes/object比较.md)
+
+[[objectObject] 是什么](/JsNotes/[objectObject]是什么.md)
+
+[区别 Some() Every() Find()](/JsNotes/区别_Some_Every_Find.md)
+
+[区别 for..in forOf](/JsNotes/区别for..in,forOf.md)
+
+[区别 map() reduce() filter()](/JsNotes/区别map_reduce_filter.md)
+
+[区别 Set Map Array ](/JsNotes/区别map&set.md)
 
 <br></br>
 ## Vue Notes
