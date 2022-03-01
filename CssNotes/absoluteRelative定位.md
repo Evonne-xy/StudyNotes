@@ -9,7 +9,7 @@ overflow-y:auto
 ```
 
 # relative 
-![relative-Position-img](Img\relativePositionDes.png)
+![relative-Position-img](../CssNotes/Img/relativePositionDes.png)
 
 一般用于微调整位置,相对于自己的位置进行移动
 老家会留坑，即使走了，老家也有他的位置
@@ -17,7 +17,7 @@ overflow-y:auto
 ---
 
 # absolute
-![absolute-Position-img](Img\absolutePositionDes.png)
+![absolute-Position-img](../CssNotes/Img/absolutePositionDes.png)
 绝对定位： 以浏览器为坐标进行位置精准描述
 绝对定位用来制作压盖，遮罩效果（z-index）
 

@@ -32,6 +32,8 @@ VueNotes 的笔记较长，也是最开始写的一个笔记，还未归类，�
 ## Html && CSS
 [absolute,Relative定位](/CssNotes/absoluteRelative定位.md)
 
+[flex布局详细版](/CssNotes/Flex布局详细版.md)
+
 [Css像素&&视口](/CssNotes/Css像素&&视口.md)
 
 [深度广度优先遍历](/CssNotes/Flex布局详细版.md)
@@ -59,6 +61,8 @@ VueNotes 的笔记较长，也是最开始写的一个笔记，还未归类，�
 [float布局](/InterviewNotes/Css/float布局.md)
 
 [flex布局必会要点](/InterviewNotes/Css/flex布局必会要点.md)
+
+
 
 <br></br>
 ## JavaScript
@@ -93,6 +97,44 @@ VueNotes 的笔记较长，也是最开始写的一个笔记，还未归类，�
 
 [variable shadowing是什么](/InterviewNotes/Js/variableshadowing是什么.md)
 
+### 异步
+[同步与异步](/InterviewNotes/Js/同步与异步.md)
+
+[Promise基本使用](/InterviewNotes/Js/Promise基本使用.md)
+
+[async,await使用](/InterviewNotes/Js/async,await使用.md)
+
+[为什么promise比setTimeout()执行快?](/InterviewNotes/Js/为什么promise比setTimeout()快.md)
+
+[手写promise函数](/InterviewNotes/js/手写promise函数.md)
+
+[异步难题(多看看)](/InterviewNotes/Js/异步难题.md)
+
+
+### JS-WebAPI - DOM && BOM
+[DOM操作](/InterviewNotes/js/DOM操作.md)
+
+[BOM操作](/InterviewNotes/js/BOM操作.md)
+
+
+### JS-WebAPI 事件
+
+[事件绑定&事件冒泡](/InterviewNotes/js/事件绑定&事件冒泡.md)
+
+### Js-WebAPI AJAX
+
+[ajax核心API-XMLHttpRequest，如何手写ajax?](/InterviewNotes/Js/ajax核心API-XMLHttpRequest.md)
+
+[什么是跨域，跨域的解决方案](/InterviewNotes/Js/跨域.md)
+
+
+### JS-WebAPI 存储
+[什么是cookie session token oauth JWT?](/InterviewNotes/Js/什么是cookie%20session%20token.md)
+
+### Http
+[HTTP状态码,header,缓存](/InterviewNotes/Js/HTTP状态码,header,缓存.md)
+
+
 ---
 [什么是函数式编程](/JsNotes/What_is_Functional_Programming.md)
 
@@ -111,6 +153,8 @@ VueNotes 的笔记较长，也是最开始写的一个笔记，还未归类，�
 <br></br>
 ## Vue Notes
 [Udemy上课总结的Vue 笔记](/VueNotes/Vue_notes.md)
+
+[watch,computed,以及它们区别](/VueNotes/watch,computed区别.md)
 
 [适配不同客户端](/VueNotes/适配不同客户端.md)
 <br></br>

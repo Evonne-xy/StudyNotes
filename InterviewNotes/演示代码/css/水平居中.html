@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水平居中</title>
+    <style>
+        .container {
+            border:1px solid #000;
+            margin:20px;
+            padding:10px
+        }
+
+        .item{
+            background-color:#ccc
+        }
+
+        .inlineItem{
+            text-align: center;
+        }
+
+        .blockItem .item{
+            width:500px;
+            margin:0 auto
+        }
+
+        .absoluteItem{
+            height:200px
+        }
+
+        .absoluteItem .item{
+            width:300px;
+            position:absolute;
+            left:50%;
+            margin-left:-150px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class = "container inlineItem">
+        <span>This is inline element</span>
+    </div>
+
+    <div class = "container blockItem">
+        <div class="item">This is block item</div>
+    </div>
+
+    <div class = "container absoluteItem">
+        <div class="item">This is absolute item</div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+</html>

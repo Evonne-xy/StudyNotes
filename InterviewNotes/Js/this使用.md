@@ -27,6 +27,7 @@ const zhangSan = {
     })
   }
   waitAgain() {
+
         setTimeout(() => {
             // this 即当前对象
             // 箭头函数this永远取上级作用域this
@@ -80,6 +81,8 @@ amy.sayName();
 
 #### Arrow function -》指向的是父级对象
 
+当作()=>不存在，然后指向父级对象
+
 ```javascript
 let fn = {
   name: "Sally",
@@ -102,4 +105,74 @@ let fn = {
 fn.init();
 ```
 
----
+如果是这种情况 就是init是箭头函数，settimeout也是箭头函数，那它会忽略箭头函数，指向父级对象，也就是window
+```js
+let fn = {
+  name: "Sally",
+  init: () => {
+    setTimeout(() => {
+            console.log(this);  //window
+        }, 2000);
+  },
+};
+fn.init();
+
+```
+
+
+那如果是这样，你可以看到innit是一个function，里面是一个箭头函数，忽略箭头函数 寻找父级，那就是name:sally
+```js
+
+let fn = {
+  name: "Sally",
+  init: function() {
+    setTimeout(() => {
+            console.log(this);  //Obj: name:sally
+        }, 2000);
+  },
+};
+fn.init();
+
+```
+
+
+### setTimeout this指向问题
+setTimeout中的function你可以理解为callback,
+
+
+setTimeout,interval等属于宏任务，会加入执行队列，等待下一次循环再依次执行。执行环境是全局。
+```js
+function callback(){}  
+setTimeout(callback,2000);
+```
+
+```js
+function setTimeout(fn,delay) {
+// 等待delay 毫秒
+fn(); // <-- 调用位置！
+}
+```
+
+他是直接调用fn(),前面没有给任何对象绑定在一起，所以根据JavaScript的规则，它属于默认绑定，自然就是window了，不知道你能否理解？如果你想改变他得绑定对象，可以使用bind去绑定。
+
+```js
+var obj = {
+    name: 'name',
+    foo: function () {
+        console.log(this); // Object {name: "name"}
+        setTimeout(function () {
+            console.log(this);  // Window
+        }, 1000);
+    },
+    foo2: function () {
+        console.log(this); // Object {name: "name"}
+        setTimeout(() => {
+            console.log(this);  // Object {name: "name"}
+        }, 2000);
+    },
+    foo3: function(){
+        console.log(this);
+        setTimeout(function(){console.log(this);}.bind(this), 2000)
+    }
+}
+```

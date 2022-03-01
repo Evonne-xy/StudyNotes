@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣杯布局</title>
+    <style>
+        body {
+            min-width: 550px;
+        }
+        header{
+            text-align: center;
+            background-color: #f1f1f1;
+        }
+        #center{
+            background-color: #ccc;
+            width:100%
+        }
+        #container{
+            padding-left:200px;
+            padding-right:150px
+        }
+        #container .column{
+            float:left
+        }
+        #left{
+            position:relative;
+            width:200px;
+            background-color: yellow;
+            right:200px;
+            margin-left:-100% /*针对当前元素 即当前元素的全部宽度 */
+        }
+        #right{
+
+            width:150px;
+            background-color: red;
+            margin-right: -150px; /*按道理说应该是右边的元素左移，当左移到他本身的宽度时候，就相当于他没有宽度了，所以就上去了 */
+        }
+        #footer{
+            text-align:center;
+            background-color:#f1f1f1;
+        }
+        
+        /* .clearfix:after{
+            clear: both;
+            display:block;
+            content:''
+        } */
+        .clearfix{
+            overflow:hidden;
+        }
+    </style>
+</head>
+<body>
+    <header>This is header</header>
+    <div id = "container" class="clearfix">
+        <div id = "center" class = "column">This is center</div>
+        <div id = "left" class = "column">This is right</div>
+        <div id = "right" class = "column">This is left</div>
+    </div>
+    <div id = "footer">This is footer</div>
+</body>
+</html>
+
