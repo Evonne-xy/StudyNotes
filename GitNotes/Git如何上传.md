@@ -1,8 +1,3 @@
-![Git-Cheatsheet](GitCheatsheet.png)
-
-
-
-
 ## 继"Black Lives Matter"运动后 git如何上传
 
 1. cd /d e:....(path)  //定位到那个位置

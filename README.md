@@ -154,12 +154,21 @@ VueNotes 的笔记较长，也是最开始写的一个笔记，还未归类，�
 ## Vue Notes
 [Udemy上课总结的Vue 笔记](/VueNotes/Vue_notes.md)
 
+[v-if,v-show,v-else区别](/VueNotes/v-if,v-show,v-else区别.md)
+
+[vue 基本知识](/VueNotes/vue%20基本知识.md)
+
 [watch,computed,以及它们区别](/VueNotes/watch,computed区别.md)
 
 [适配不同客户端](/VueNotes/适配不同客户端.md)
 <br></br>
 ## Git Notes
-[继"Black Lives Matter"运动后 git如何上传 && 遇见的错误](/GitNotes/GitNotes.md)
+[Git常用命令](/GitNotes/Git常用命令.md)
+
+[继"Black Lives Matter"运动后 git如何上传](/GitNotes/Git如何上传.md)
+
+[Git如何多人合作？](/GitNotes/Git多人合作.md)
+
 <br></br>
 ## Interview
 [InterviewPrep](/InterviewNotes/InterviewPrep.md)
